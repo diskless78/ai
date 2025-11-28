@@ -35,7 +35,6 @@ cmake \
 
 make -j$(nproc)
 
-
 # Build gst-bytetrack
 cd /workspace/cxview-plugin-counting/gst-bytetrack
 make -j4
