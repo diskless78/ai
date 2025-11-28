@@ -1,0 +1,22 @@
+FROM harbor.cxview.local/cxview/cxview-plugin:0.2.3-base-x86
+
+LABEL maintainer=Nautilus<hoang.nguyentien@cxview.ai>
+
+# Dependece
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub || true \
+    && apt-get update && apt-get install -y --no-install-recommends \
+    autoconf libssl-dev libopenblas-dev libeigen3-dev shc uuid-dev \
+    python3-wheel ninja-build
+RUN pip3 install meson
+RUN apt remove -y gstreamer1.0-plugins-ugly
+
+# Build faiss
+RUN cd /tmp && git clone https://github.com/facebookresearch/faiss -b v1.6.3 \
+    && cd faiss && ./configure --without-cuda \
+    && sed -i "s|x86_64|aarch64|g" makefile.inc \
+    && make -j$(nproc) && make install && ldconfig
+
+RUN cd /tmp && wget https://github.com/edenhill/librdkafka/archive/refs/tags/v1.7.0.tar.gz \
+    && tar -xvzf v1.7.0.tar.gz && cd librdkafka-1.7.0/ \
+    && ./configure --enable-ssl && make && make install \
+    && ldconfig && cd / && rm -rf /tmp/*

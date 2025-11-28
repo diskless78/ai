@@ -1,0 +1,4 @@
+SUBDIRS=c	\
+    javascript  \
+    python
+

@@ -1,0 +1,4 @@
+[message-broker]
+#consumer-group-id = groupid
+#partition-key = 1
+#share-connection = 1

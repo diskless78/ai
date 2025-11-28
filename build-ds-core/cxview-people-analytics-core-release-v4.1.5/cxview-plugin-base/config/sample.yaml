@@ -1,0 +1,1 @@
+main_pipeline: "nvstreammux name=m batched-push-timeout=40000 batch-size=4 width=1928 height=1084 ! srcmonitor ! nvmultistreamtiler rows=2 columns=2 width=1280 height=720 ! nvvideoconvert ! nveglglessink sync=false async=true"

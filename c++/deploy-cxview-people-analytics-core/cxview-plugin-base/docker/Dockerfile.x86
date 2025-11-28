@@ -1,0 +1,49 @@
+FROM nvcr.io/nvidia/deepstream:5.0.1-20.09-base
+
+LABEL maintainer=MediTech<thai.nguyentien@cxview.ai>
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub || true \
+    && apt-get update && apt-get install -y --no-install-recommends cmake build-essential \
+    wget \
+    automake libtool pkg-config libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libglib2.0-dev libjson-glib-dev gtk-doc-tools libreadline-dev libncursesw5-dev libdaemon-dev libjansson-dev libsoup2.4-dev python3-pip sudo python3-setuptools
+
+# yaml
+RUN cd /tmp && wget https://github.com/jbeder/yaml-cpp/archive/refs/tags/yaml-cpp-0.7.0.tar.gz \
+    && tar -xvzf yaml-cpp-0.7.0.tar.gz && cd yaml-cpp-yaml-cpp-0.7.0/ \
+    && mkdir build && cd build \
+    && env CFLAGS='-fPIC' CXXFLAGS='-fPIC' cmake -DCMAKE_BUILD_TYPE=Release .. && make -j${nproc} && make install
+
+# spdlog
+RUN cd /tmp && wget https://github.com/gabime/spdlog/archive/refs/tags/v1.9.2.tar.gz \
+    && tar -xvzf v1.9.2.tar.gz && cd spdlog-1.9.2/ \
+    && mkdir build && cd build \
+    && cmake .. && make -j${nproc} && make install
+
+# gstd
+RUN cd /tmp && wget https://github.com/RidgeRun/gstd-1.x/archive/refs/tags/v0.13.0.tar.gz \
+    && tar -xvzf v0.13.0.tar.gz && cd gstd-1.x-0.13.0/ \
+    && ./autogen.sh && ./configure && make install \
+    && ldconfig && cd / && rm -rf /tmp/*
+
+# gstinterpipe
+RUN cd /tmp && git clone --branch v1.1.8 --depth 1 https://github.com/RidgeRun/gst-interpipe \
+    && cd gst-interpipe \
+    && GIT_SSL_NO_VERIFY=1 ./autogen.sh --libdir /usr/lib/x86_64-linux-gnu/ && make -j${nproc} && make install \
+    && ldconfig && cd / && rm -rf /tmp/*
+
+# Support utf-8
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+RUN apt-get install -y locales && \
+    locale-gen en_US.UTF-8 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# config time zone
+RUN echo "Asia/Ho_Chi_Minh" > /etc/timezone \
+    && rm -f /etc/localtime \
+    && dpkg-reconfigure -f noninteractive tzdata
+
+
+COPY nvdsincludes /opt/nvidia/deepstream/deepstream-5.0/sources/includes

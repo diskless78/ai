@@ -1,0 +1,7 @@
+# docker related files
+.dockerignore
+Dockerfile*
+
+# source repository history
+.git/
+data/weights/youtu_reid_baseline_lite_arm.plan
