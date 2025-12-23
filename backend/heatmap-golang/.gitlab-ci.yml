@@ -1,0 +1,107 @@
+image: docker:dind
+
+
+stages:
+  - checkout
+  - build
+  # - test
+  - release
+  - deploy-qa
+  - deploy-prod
+
+
+variables:
+  # CI_DEBUG_TRACE: "true"
+  DOCKER_DRIVER: overlay2
+
+  # application domain name
+  QA_DOMAIN_NAME: heatmap-op.backend.dev.staging.cxview.ai
+  PROD_DOMAIN_NAME: heatmap-op.api.cxview.ai
+  CHART_PATH_QA: ./charts/staging
+  CHART_PATH_PROD: ./charts/prod
+  INGRESS_CLASS_NAME: nginx
+  
+  CI_REGISTRY: hub.cxview.ai
+  CONTAINER_PROJECT: cxview/heatmap-op
+  CONTAINER_IMAGE: $CI_REGISTRY/$CONTAINER_PROJECT
+  CONTAINER_TAG: $CI_COMMIT_SHORT_SHA
+  
+  # variables 好像不支持这样嵌套赋值。。。Ref:https://docs.gitlab.com/ee/ci/variables/where_variables_can_be_used.html#gitlab-runner-internal-variable-expansion-mechanism
+  # CONTAINER_BUILT_IMAGE: "$CONTAINER_IMAGE:$CONTAINER_TAG"
+  # CONTAINER_RELEASE_IMAGE: "$CONTAINER_IMAGE:latest"
+  
+  # Kubernetes config
+  STAGE_NAMESPACE: cxview-staging
+  PROD_NAMESPACE: cxview-production
+  STAGE_RELEASE_NAME: heatmap-op-qa
+  PROD_RELEASE_NAME: heatmap-op-product
+  
+before_script:
+  - echo "Hello Heatmap"
+
+
+build:
+  stage: build
+
+  script:
+    - docker login -u ${CI_REGISTRY_USER} -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - echo "Building image..."
+    - docker build --pull -t $CONTAINER_IMAGE:$CONTAINER_TAG .
+    - echo "Pushing to ${CI_REGISTRY}..."
+    - docker push $CONTAINER_IMAGE:$CONTAINER_TAG
+  tags:
+    - docker
+
+
+# test1:
+#   variables:
+#     GIT_STRATEGY: none
+#   image: golang:1.14
+#   stage: test
+#   script:
+#     - echo "do unit test"
+#     - cd code
+#     - cd backend/cmd/api/container
+#     - go test
+#     - cd ../controller 
+#     - go test
+#   tags:
+#     - docker
+
+release-image:
+  variables:
+    GIT_STRATEGY: clone
+  stage: release
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CONTAINER_IMAGE:$CONTAINER_TAG
+    - docker tag $CONTAINER_IMAGE:$CONTAINER_TAG $CONTAINER_IMAGE:latest
+    - docker push $CONTAINER_IMAGE:latest
+  tags:
+    - docker
+
+
+deploy_qa:
+  variables:
+    GIT_STRATEGY: clone
+  stage: deploy-qa
+  script:
+    - >
+      helm upgrade --install $STAGE_RELEASE_NAME $CHART_PATH_QA
+      --set image.repository=$CONTAINER_IMAGE
+      --set image.tag=$CONTAINER_TAG
+      --set image.pullPolicy=Always
+      --set ingress.enabled=true
+      --set ingress.hosts[0]=$QA_DOMAIN_NAME
+      --set ingress.tls[0].hosts[0]=$QA_DOMAIN_NAME
+      --set ingress.tls[0].secretName=$QA_DOMAIN_NAME
+      --set ingress.enabled=true
+      --set service.port="5080"
+      --wait
+      --namespace=$STAGE_NAMESPACE
+  environment:
+    name: staging
+    url: $QA_DOMAIN_NAME
+  tags:
+    - shell
+

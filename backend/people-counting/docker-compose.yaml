@@ -1,0 +1,36 @@
+version: "3"
+services:
+  people-counting:
+    build: ./
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      - GROUP_ID="123123@123Aa"
+      - KAFKA_TOPIC="gate-tz"
+      - KAFKA_BROKER="192.168.30.201:9092"
+      - S3_ACCESS_KEY="9027013B821C4614B4B65608762D89B7"
+      - S3_SECRET_KEY="B0C2FCFFAFCC4FCDB972CF9495C9E9D7"
+      - S3_REGION=us-east-1
+      - S3_URL="https://192.168.30.201:9000/"
+      - S3_CAMERA_BUCKET="camera-image"
+      - CLIENT_KEYS=https://739b4420625f4dfc95c4c8408d2617b4@o620853.ingest.sentry.io/5751719
+      
+      - MONGO_USR=admin
+      - MONGO_PWD=admin123456
+      - MONGO_HOST=192.168.30.201
+      - MONGO_PORT=27017
+      - MONGODB_NAME=Iview
+      - MONGO_AUTH_SOURCE=admin
+      - MONGO_URI="mongodb://admin:admin123456@192.168.30.151:27017/hoangml_db?authSource=admin"
+
+
+      - attdenceHistoryRecord=attdenceHistoryRecord
+      - camera=camera
+      - zone=zone
+      - user=user
+      - boxAI=boxAI
+      - group=group
+      - routes=routes
+      - PORT=5001
+

@@ -1,0 +1,32 @@
+# MONGODB
+ENV="DEV"
+
+PORT=8000
+
+# SECRET KEY
+SECRET_KEY="chieuhoanghonbuongtainoiday@2099"
+INTERNAL_SECRET_KEY="7013B821614B4B65608762D8"
+
+# redis
+REDIS_HOST="redis-master.redis.svc"
+REDIS_PORT="6379"
+REDIS_DATABASE="5"
+REDIS_PASSWORD="redisadmin12312"
+
+# MongoDB
+MONGO_URI="mongodb://notification-service:67i6zVpTypn3@mongodb.mongodb.svc:27017/cxview?authSource=cxview"
+MONGODB_NAME="cxview"
+
+# 
+GOOGLE_APPLICATION_CREDENTIALS="key.json"
+
+
+# MongoDB Collection
+NOTIFICATION_COLLECTION="notifications"
+
+# Minio
+MINIO_HOST = "s3.cxview.ai"
+MINIO_ACCESS_KEY = "notification-user"
+MINIO_SECRET_KEY = "8WSFdQz612UV"
+MINIO_REGION = "ap-east-1"
+MINIO_NOTIFICATION_BUCKET="notifications"

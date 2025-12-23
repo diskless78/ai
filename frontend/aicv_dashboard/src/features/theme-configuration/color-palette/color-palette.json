@@ -1,0 +1,115 @@
+{
+  "red": [
+    { "label": "Red/100", "lightColor": "#450303", "darkColor": "#ffeded" },
+    { "label": "Red/90", "lightColor": "#670909", "darkColor": "#ffc4c4" },
+    { "label": "Red/80", "lightColor": "#891313", "darkColor": "#ff9a9a" },
+    { "label": "Red/70", "lightColor": "#ab2020", "darkColor": "#fe7171" },
+    { "label": "Red/60", "lightColor": "#cd3030", "darkColor": "#ef4444" },
+    { "label": "Red/50", "lightColor": "#ef4444", "darkColor": "#cd3030" },
+    { "label": "Red/40", "lightColor": "#fe7171", "darkColor": "#ab2020" },
+    { "label": "Red/30", "lightColor": "#ff9a9a", "darkColor": "#891313" },
+    { "label": "Red/20", "lightColor": "#ffc4c4", "darkColor": "#670909" },
+    { "label": "Red/10", "lightColor": "#ffeded", "darkColor": "#450303" }
+  ],
+  "orange": [
+    { "label": "Orange/100", "lightColor": "#3b1b06", "darkColor": "#fff1e8" },
+    { "label": "Orange/90", "lightColor": "#7f3400", "darkColor": "#ffd8be" },
+    { "label": "Orange/80", "lightColor": "#a74500", "darkColor": "#ffc094" },
+    { "label": "Orange/70", "lightColor": "#d05703", "darkColor": "#ffa76a" },
+    { "label": "Orange/60", "lightColor": "#f97316", "darkColor": "#ff8e40" },
+    { "label": "Orange/50", "lightColor": "#ff8e40", "darkColor": "#f97316" },
+    { "label": "Orange/40", "lightColor": "#ffa76a", "darkColor": "#d05703" },
+    { "label": "Orange/30", "lightColor": "#ffc094", "darkColor": "#a74500" },
+    { "label": "Orange/20", "lightColor": "#ffd8be", "darkColor": "#7f3400" },
+    { "label": "Orange/10", "lightColor": "#fff1e8", "darkColor": "#3b1b06" }
+  ],
+  "yellow": [
+    { "label": "Yellow/100", "lightColor": "#4f451c", "darkColor": "#fffcf3" },
+    { "label": "Yellow/90", "lightColor": "#6c5f29", "darkColor": "#ffff5c" },
+    { "label": "Yellow/80", "lightColor": "#897938", "darkColor": "#ffeda9" },
+    { "label": "Yellow/70", "lightColor": "#a79349", "darkColor": "#fee584" },
+    { "label": "Yellow/60", "lightColor": "#c4ae5b", "darkColor": "#e1c96f" },
+    { "label": "Yellow/50", "lightColor": "#e1c96f", "darkColor": "#c4ae5b" },
+    { "label": "Yellow/40", "lightColor": "#fee584", "darkColor": "#a79349" },
+    { "label": "Yellow/30", "lightColor": "#ffeda9", "darkColor": "#897938" },
+    { "label": "Yellow/20", "lightColor": "#ffff5c", "darkColor": "#6c5f29" },
+    { "label": "Yellow/10", "lightColor": "#fffcf3", "darkColor": "#4f451c" }
+  ],
+  "green": [
+    { "label": "Green/100", "lightColor": "#004b2f", "darkColor": "#ecfff8" },
+    { "label": "Green/90", "lightColor": "#036d46", "darkColor": "#c2ffe8" },
+    { "label": "Green/80", "lightColor": "#0d8f5f", "darkColor": "#97ffd9" },
+    { "label": "Green/70", "lightColor": "#1ab179", "darkColor": "#6dffc9" },
+    { "label": "Green/60", "lightColor": "#2bd395", "darkColor": "#40f5b2" },
+    { "label": "Green/50", "lightColor": "#40f5b2", "darkColor": "#2bd395" },
+    { "label": "Green/40", "lightColor": "#6dffc9", "darkColor": "#1ab179" },
+    { "label": "Green/30", "lightColor": "#97ffd9", "darkColor": "#0d8f5f" },
+    { "label": "Green/20", "lightColor": "#c2ffe8", "darkColor": "#036d46" },
+    { "label": "Green/10", "lightColor": "#ecfff8", "darkColor": "#004b2f" }
+  ],
+  "blue": [
+    { "label": "Blue/100", "lightColor": "#002a4c", "darkColor": "#e6f4ff" },
+    { "label": "Blue/90", "lightColor": "#004175", "darkColor": "#b8e0ff" },
+    { "label": "Blue/80", "lightColor": "#00589d", "darkColor": "#8bccff" },
+    { "label": "Blue/70", "lightColor": "#006fc6", "darkColor": "#5eb8ff" },
+    { "label": "Blue/60", "lightColor": "#0387ef", "darkColor": "#30a4ff" },
+    { "label": "Blue/50", "lightColor": "#30a4ff", "darkColor": "#0387ef" },
+    { "label": "Blue/40", "lightColor": "#5eb8ff", "darkColor": "#006fc6" },
+    { "label": "Blue/30", "lightColor": "#8bccff", "darkColor": "#00589d" },
+    { "label": "Blue/20", "lightColor": "#b8e0ff", "darkColor": "#004175" },
+    { "label": "Blue/10", "lightColor": "#e6f4ff", "darkColor": "#002a4c" }
+  ],
+  "purple": [
+    { "label": "Purple/100", "lightColor": "#2a1b47", "darkColor": "#f7f4ff" },
+    { "label": "Purple/90", "lightColor": "#3d2a64", "darkColor": "#e1d2ff" },
+    { "label": "Purple/80", "lightColor": "#513982", "darkColor": "#cab0ff" },
+    { "label": "Purple/70", "lightColor": "#674b9f", "darkColor": "#ae8af6" },
+    { "label": "Purple/60", "lightColor": "#7d5ebc", "darkColor": "#9573d9" },
+    { "label": "Purple/50", "lightColor": "#9573d9", "darkColor": "#7d5ebc" },
+    { "label": "Purple/40", "lightColor": "#ae8af6", "darkColor": "#674b9f" },
+    { "label": "Purple/30", "lightColor": "#cab0ff", "darkColor": "#513982" },
+    { "label": "Purple/20", "lightColor": "#e1d2ff", "darkColor": "#3d2a64" },
+    { "label": "Purple/10", "lightColor": "#f7f4ff", "darkColor": "#2a1b47" }
+  ],
+  "pink": [
+    { "label": "Pink/100", "lightColor": "#581646", "darkColor": "#fff1fb" },
+    { "label": "Pink/90", "lightColor": "#75225e", "darkColor": "#ffc7f0" },
+    { "label": "Pink/80", "lightColor": "#932f77", "darkColor": "#ff9ee4" },
+    { "label": "Pink/70", "lightColor": "#b03e91", "darkColor": "#ff75d9" },
+    { "label": "Pink/60", "lightColor": "#cd50ab", "darkColor": "#ea63c5" },
+    { "label": "Pink/50", "lightColor": "#ea63c5", "darkColor": "#cd50ab" },
+    { "label": "Pink/40", "lightColor": "#ff75d9", "darkColor": "#b03e91" },
+    { "label": "Pink/30", "lightColor": "#ff9ee4", "darkColor": "#932f77" },
+    { "label": "Pink/20", "lightColor": "#ffc7f0", "darkColor": "#75225e" },
+    { "label": "Pink/10", "lightColor": "#fff1fb", "darkColor": "#581646" }
+  ],
+  "neutral": [
+    { "label": "Neutral/999", "lightColor": "#020512", "darkColor": "#ffffff" },
+    { "label": "Neutral/100", "lightColor": "#0c111d", "darkColor": "#fdfdfd" },
+    { "label": "Neutral/90", "lightColor": "#121c2e", "darkColor": "#e7e8e9" },
+    { "label": "Neutral/80", "lightColor": "#374151", "darkColor": "#edecef" },
+    { "label": "Neutral/70", "lightColor": "#666e7d", "darkColor": "#d3d3db" },
+    { "label": "Neutral/60", "lightColor": "#818897", "darkColor": "#a1a1a8" },
+    { "label": "Neutral/50", "lightColor": "#a1a1a8", "darkColor": "#7a8397" },
+    { "label": "Neutral/40", "lightColor": "#d3d3db", "darkColor": "#4d5a73" },
+    { "label": "Neutral/30", "lightColor": "#dfdfdf", "darkColor": "#222935" },
+    { "label": "Neutral/20", "lightColor": "#eff3f8", "darkColor": "#262935" },
+    { "label": "Neutral/10", "lightColor": "#f4f5f7", "darkColor": "#1d1f28" },
+    { "label": "Neutral/0", "lightColor": "#ffffff", "darkColor": "#171920" },
+    {
+      "label": "Neutral/white",
+      "lightColor": "#ffffff",
+      "darkColor": "#ffffff"
+    },
+    {
+      "label": "Neutral/black",
+      "lightColor": "#000000",
+      "darkColor": "#000000"
+    },
+    {
+      "label": "Neutral/black 2%",
+      "lightColor": "#00000005",
+      "darkColor": "#ffffff05"
+    }
+  ]
+}

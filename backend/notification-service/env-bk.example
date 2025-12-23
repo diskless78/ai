@@ -1,0 +1,22 @@
+KAFKA_BROKERS=hcm.gateway01.cxview.ai:9093
+KAFKA_TOPIC=cxview-staging-new2legacy-message
+KAFKA_GROUP_ID=notification-service
+KAFKA_MAX_WORKERS=200
+
+SERVICE_PORT=8080
+
+INTERNAL_SECRET_KEY="7013B821614B4B65608762D8"
+NOTIFICATION_URL="https://gateway-notificaton.cxview.ai"
+NOTIFICATION_SEND_PATH="/api/v1/notifications/send-list"
+
+DB_NAME="cxview"
+MONGO_URI="mongodb://mongodb.mongodb.svc:27017"
+NOTIFICATION_COLLECTION="notifications"
+CAMERA_COLLECTION="camera"
+
+# Minio
+MINIO_HOST = "s3.cxview.ai:443"
+MINIO_ACCESS_KEY = "notification-user"
+MINIO_SECRET_KEY = "nIsbq4rR5cB3"
+MINIO_REGION = "ap-east-1"
+MINIO_NOTIFICATION_BUCKET="notification-bucket"

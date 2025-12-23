@@ -1,0 +1,88 @@
+/** **************************************
+* Fonts: app
+*************************************** */
+/** @import '@fontsource-variable/manrope';
+
+/** **************************************
+* Plugins
+*************************************** */
+/* scrollbar */
+@import './components/scrollbar/styles.css';
+
+/* chart */
+/** @import './components/chart/styles.css';
+
+/** **************************************
+* Baseline
+*************************************** */
+html {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  font-size: 16px; /* 1rem = 16px */
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 15px; /* Smaller font size on smaller screens */
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Smaller font size on smaller screens */
+  }
+}
+@media (max-width: 480px) {
+  html {
+    font-size: 12px; /* Even smaller font size on mobile */
+  }
+}
+body,
+#root,
+#root__layout {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 100%;
+  flex-direction: column;
+}
+img {
+  vertical-align: middle;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: none;
+}
+input[type='number']::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+input[type='number']::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.apexcharts-tooltip {
+  border: none !important;
+  box-shadow: none !important;
+  background: white !important;
+  overflow: visible !important;
+}
+
+.apexcharts-tooltip.translate-y-120 {
+  transform: translateY(-120px);
+}
+
+.apexcharts-tooltip.translate-y-100 {
+  transform: translateY(-100px);
+}
+
+.apexcharts-tooltip.translate-y-80 {
+  transform: translateY(-80px);
+}
+
+.apexcharts-tooltip.translate-y-50 {
+  transform: translateY(-50px);
+}
