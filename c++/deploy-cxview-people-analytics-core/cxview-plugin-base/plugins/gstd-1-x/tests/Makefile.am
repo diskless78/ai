@@ -1,5 +1,0 @@
-SUBDIRS = 	\
-	gstd	\
-	libgstd \
-	libgstc
-	

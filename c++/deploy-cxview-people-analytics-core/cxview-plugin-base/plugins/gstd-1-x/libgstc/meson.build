@@ -1,2 +1,0 @@
-subdir('c')
-subdir('python')

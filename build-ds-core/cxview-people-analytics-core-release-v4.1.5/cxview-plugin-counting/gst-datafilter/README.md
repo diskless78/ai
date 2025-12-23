@@ -1,2 +1,0 @@
-# gst-datafilter-core
-
