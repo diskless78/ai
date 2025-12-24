@@ -72,7 +72,7 @@ deploy_prod:
       --set ingress.hosts[0]=$PROD_DOMAIN_NAME
       --set ingress.tls[0].hosts[0]=$PROD_DOMAIN_NAME
       --set ingress.tls[0].secretName=$PROD_DOMAIN_NAME
-      --set service.port="80"
+      --set service.port="5080"
       --wait
       --namespace=$PROD_NAMESPACE
   environment:

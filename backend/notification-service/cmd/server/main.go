@@ -45,6 +45,10 @@ func main() {
 		log.Fatalf("Minio init error: %v", s3Err)
 	}
 
+	exists, _ := s3Client.Minio.BucketExists(ctx, cfg.MinioNotificationBucket)
+
+	log.Printf("s3Client: %v", exists)
+
 	// Notification handler (kafka -> mongo -> send to notification api)
 	notifier := notification.NewHandler(mongo, s3Client)
 

@@ -60,13 +60,15 @@ func (h *Handler) HandleMessage(key, value []byte) error {
 	}
 
 	// Lấy user_id từ camera info
-	var tenantId *string
+	var tenantId any = nil
 	var storeIds []string
 
 	if camera != nil {
-		tenantId = &camera.UserID
+		tenantId = camera.UserID
 		storeIds = camera.ListGroup
 	}
+
+	log.Printf("tenantId: %v", tenantId)
 
 	// Lấy các noti từ messages
 	listNotification := []models.Notification{}

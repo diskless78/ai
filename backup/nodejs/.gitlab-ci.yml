@@ -2,6 +2,7 @@ image: docker:dind
 
 stages:
   - build
+  - deploy_staging
   - deploy_prod
   - cleanup
 
@@ -9,26 +10,26 @@ variables:
   DOCKER_DRIVER: overlay2
 
   CI_REGISTRY: harbor.cxview.local
-  CONTAINER_PROJECT: cxview/notification-service-api
+  CONTAINER_PROJECT: cxview/aicv-dashboard
   CONTAINER_IMAGE: $CI_REGISTRY/$CONTAINER_PROJECT
   COMMIT_SHA: $CI_COMMIT_SHORT_SHA
 
   # Staging
   STAGE_NAMESPACE: cxview-staging
-  STAGE_RELEASE_NAME: notification-service-api-staging
-  STAGE_DOMAIN_NAME: gateway-notificaton.cxview.local
+  STAGE_RELEASE_NAME: aicv-dashboard-staging
+  STAGE_DOMAIN_NAME: portal.cxview.local
   CHART_PATH_STAGING: ./charts/staging
   TAG_STAGING: staging-$COMMIT_SHA
 
   # Production
   PROD_NAMESPACE: cxview-production
-  PROD_RELEASE_NAME: notification-service-api-prod
-  PROD_DOMAIN_NAME: gateway-notification.cxview.ai
+  PROD_RELEASE_NAME: aicv-dashboard-prod
+  PROD_DOMAIN_NAME: portal.cxview.ai
   CHART_PATH_PROD: ./charts/prod
   TAG_PROD: prod-$COMMIT_SHA
 
 before_script:
-  - echo "Harbor Login ..."
+  - echo "Deploy AICV Dashboard"
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
 
 # ==============================
@@ -51,7 +52,37 @@ build:
     - docker push $CONTAINER_IMAGE:$TAG_PROD
 
 # ==============================
-# 2) Deploy Production (Manual)
+# 2) Deploy Staging (Automatic)
+# ==============================
+deploy_staging:
+  stage: deploy_staging
+  tags: [k8s-prod]
+  needs: ["build"]
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
+      when: on_success
+    - when: never
+  script:
+    - echo "Deploying staging..."
+    - apk add --no-cache helm bash
+    - >
+      helm upgrade --install $STAGE_RELEASE_NAME $CHART_PATH_STAGING
+      --set image.repository=$CONTAINER_IMAGE
+      --set image.tag=$TAG_STAGING
+      --set image.pullPolicy=Always
+      --set ingress.enabled=true
+      --set ingress.hosts[0]=$STAGE_DOMAIN_NAME
+      --set ingress.tls[0].hosts[0]=$STAGE_DOMAIN_NAME
+      --set ingress.tls[0].secretName=$STAGE_DOMAIN_NAME
+      --set service.port="5080"
+      --wait
+      --namespace=$STAGE_NAMESPACE
+  environment:
+    name: development
+    url: https://$STAGE_DOMAIN_NAME
+
+# ==============================
+# 3) Deploy Production (Manual)
 # ==============================
 deploy_prod:
   stage: deploy_prod
@@ -72,7 +103,7 @@ deploy_prod:
       --set ingress.hosts[0]=$PROD_DOMAIN_NAME
       --set ingress.tls[0].hosts[0]=$PROD_DOMAIN_NAME
       --set ingress.tls[0].secretName=$PROD_DOMAIN_NAME
-      --set service.port="80"
+      --set service.port="5080"
       --wait
       --namespace=$PROD_NAMESPACE
   environment:

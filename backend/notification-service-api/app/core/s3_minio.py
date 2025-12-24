@@ -2,7 +2,10 @@ from datetime import timedelta
 from minio import Minio, S3Error
 from app.configs import config
 
-secure_s3 = False
+if config.ENV != "DEV":
+    secure_s3 = True
+else:
+    secure_s3 = False
 
 s3_client = Minio(
     config.MINIO_HOST,
