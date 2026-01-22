@@ -1,4 +1,0 @@
-EMPTY_STRING = ""
-LANGUAGE_VI = "vn"
-LANGUAGE_EN = "en"
-LOCAL_TIMEZONE = "Asia/Ho_Chi_Minh"

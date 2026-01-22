@@ -1,0 +1,15 @@
+# Convert to Markdown
+docling
+pandas
+openpyxl
+
+# AI model và Vector Database
+pymilvus
+sentence-transformers
+torch
+
+# Web UI
+streamlit
+
+# Library for vector/matrix operator
+numpy
