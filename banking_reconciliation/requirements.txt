@@ -4,7 +4,7 @@ pandas
 openpyxl
 
 # AI model và Vector Database
-pymilvus
+pymilvus[milvus-lite]
 sentence-transformers
 torch
 

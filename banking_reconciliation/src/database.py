@@ -18,7 +18,7 @@ class MilvusReconciler:
         self.collection = "reconciliation"
 
         # 3. Milvus Connection
-        self.client = MilvusClient(db_path)
+        self.client = MilvusClient(uri=db_path)
 
     def process_and_store(self, final_string_output):
         blocks = [block.strip() for block in final_string_output.split('---') if block.strip()]

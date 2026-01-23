@@ -1,0 +1,20 @@
+<View>
+  <Header value="Dán nhãn thực thể Giao dịch Ngân hàng"/>
+  
+  <Text name="text_content" value="$text" white-space="pre-wrap"/>
+
+  <Labels name="label" toName="text_content">
+    <Label value="TRANS_DATE" background="#FFA39E" hotkey="1"/>
+    <Label value="REF_NO" background="#D3F261" hotkey="2"/>
+    <Label value="CREDIT_AMT" background="#B7EB8F" hotkey="3"/>
+    <Label value="VAT_AMT" background="#ADC6FF" hotkey="4"/>
+    <Label value="GROSS_AMT" background="#FFD591" hotkey="5"/>
+    
+    <Label value="ACC_NAME" background="#FF9C6E" hotkey="6"/>
+    <Label value="ACC_NO" background="#95DE64" hotkey="7"/>
+    <Label value="CIF" background="#9254DE" hotkey="8"/>
+    <Label value="ADDRESS" background="#FF85C0" hotkey="9"/>
+    <Label value="CURRENCY" background="#5CDBD3" hotkey="0"/>
+    <Label value="DESC" background="#D9D9D9" hotkey="-"/>
+  </Labels>
+</View>

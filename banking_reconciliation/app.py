@@ -16,10 +16,10 @@ with st.sidebar:
     st.header("Nạp dữ liệu đầu vào")
     file = st.file_uploader("Nạp file Excel sao kê", type="xlsx")
     if file and st.button("Load Data"):
-        with open("data/temp.xlsx", "wb") as f:
+        with open(".temp.xlsx", "wb") as f:
             f.write(file.getbuffer())
         with st.spinner("Đang xử lý data..."):
-            data = st.session_state.processor.extract_banking_data("data/temp.xlsx")
+            data = st.session_state.processor.extract_banking_data(".temp.xlsx")
             st.session_state.reconciler.process_and_store(data)
             st.success("Data load thành công !")
 
