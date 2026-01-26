@@ -1,0 +1,43 @@
+<View>
+  <Header value="Dữ liệu Sao kê - Mapping Key/Value"/>
+  
+  <Labels name="label" toName="text">
+  
+    <Label value="KEY_TRANS_DATE" background="#ff9c6e"/>
+    <Label value="VALUE_TRANS_DATE" background="#fff2e8"/>
+
+    <Label value="KEY_REF_NUM" background="#69c0ff"/>
+    <Label value="VALUE_REF_NUM" background="#e6f7ff"/>
+
+    <Label value="KEY_DEBT_NUM" background="#ff7875"/>
+    <Label value="VALUE_DEBT_NUM" background="#fff1f0"/>
+
+    <Label value="KEY_CRED_NUM" background="#95de64"/>
+    <Label value="VALUE_CRED_NUM" background="#f6ffed"/>
+
+    <Label value="KEY_ACC_NAME" background="#ffd666"/>
+    <Label value="VALUE_ACC_NAME" background="#fffbe6"/>
+
+    <Label value="KEY_ACC_NUM" background="#b7eb8f"/>
+    <Label value="VALUE_ACC_NUM" background="#f6ffed"/>
+
+    <Label value="KEY_CIFS" background="#d9d9d9"/>
+    <Label value="VALUE_CIFS" background="#fafafa"/>
+
+    <Label value="KEY_CURRENCY_TYPE" background="#adc6ff"/>
+    <Label value="VALUE_CURRENCY_TYPE" background="#f0f5ff"/>
+
+    <Label value="KEY_ACC_ADDR" background="#d9d9d9"/>
+    <Label value="VALUE_ACC_ADDR" background="#fafafa"/>
+    
+    <Label value="KEY_TRANS_DESC" background="#d5f9ec"/>
+    <Label value="VALUE_TRANS_DESC" background="#682afa"/>
+    
+  </Labels>
+
+  <Text name="text" value="$text"/>
+  
+  <Relations>
+    <Relation value="belongs_to" />
+  </Relations>
+</View>
