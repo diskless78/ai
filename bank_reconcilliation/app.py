@@ -5,7 +5,7 @@ from src.converter import ConvertExcelToMarkdown, MarkdownCleaner
 from src.formatter import VCBFormatter
 from src.extractor import BankNERPredictor
 
-# --- Cấu hình hằng số ---
+# --- Const ---
 MODEL_PATH = "/Users/thanhdc/Data/Repository/Model/banking_model_v1"
 THRESHOLD = 0.7
 
