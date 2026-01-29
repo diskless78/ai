@@ -37,7 +37,7 @@ with st.sidebar:
     uploaded_file = st.file_uploader("Upload banking statement (xlsx)", type="xlsx")
     threshold = st.slider("Threshold", 0.1, 1.0, THRESHOLD)
 
-    process_btn = st.button("🚀 Start Process", use_container_width=True)
+    process_btn = st.button("🚀 Transaction Extrator", use_container_width=True)
 
 if uploaded_file and process_btn:
     # 1. Save temp file

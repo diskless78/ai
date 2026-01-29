@@ -15,13 +15,16 @@ if 'processor' not in st.session_state:
 
 # Sidebar Load Data
 with st.sidebar:
-    st.header("Nạp dữ liệu đầu vào")
+    st.header("Upload file sao kê ngân hàng")
     file = st.file_uploader("Nạp file Excel sao kê", type="xlsx")
     if file and st.button("Load Data"):
-        with open(".temp.xlsx", "wb") as f:
+        temp_file_path = "temp.xlsx"
+        if os.path.exists(temp_file_path):
+            os.remove(temp_file_path)
+        with open(temp_file_path, "wb") as f:
             f.write(file.getbuffer())
         with st.spinner("Đang xử lý data..."):
-            data = st.session_state.processor.extract_banking_data(".temp.xlsx")
+            data = st.session_state.processor.extract_banking_data(temp_file_path)
             st.session_state.reconciler.process_and_store(data)
             st.success("Data load thành công !")
 
